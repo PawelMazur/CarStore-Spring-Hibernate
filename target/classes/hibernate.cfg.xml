@@ -7,5 +7,10 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/carstore</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <mapping resource="com/carstore/pojo/Klient.hbm.xml"/>
+    <mapping resource="com/carstore/pojo/Samochod.hbm.xml"/>
+    <mapping resource="com/carstore/pojo/Pracownik.hbm.xml"/>
+    <mapping resource="com/carstore/pojo/Faktura.hbm.xml"/>
+    <mapping resource="com/carstore/pojo/Kategorie.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
