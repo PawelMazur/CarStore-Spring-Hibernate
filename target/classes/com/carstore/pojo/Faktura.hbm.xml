@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 5, 2018 6:27:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.carstore.pojo.Faktura" table="faktura" catalog="carstore">
+        <id name="fakturaId" type="java.lang.Short">
+            <column name="fakturaID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="samochod" class="com.carstore.pojo.Samochod" fetch="select">
+            <column name="samochodID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="klient" class="com.carstore.pojo.Klient" fetch="select">
+            <column name="klientID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pracownik" class="com.carstore.pojo.Pracownik" fetch="select">
+            <column name="pracownikID" not-null="true" />
+        </many-to-one>
+        <property name="dataSprzedazy" type="date">
+            <column name="data_sprzedazy" length="10" />
+        </property>
+        <property name="raty" type="string">
+            <column name="raty" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

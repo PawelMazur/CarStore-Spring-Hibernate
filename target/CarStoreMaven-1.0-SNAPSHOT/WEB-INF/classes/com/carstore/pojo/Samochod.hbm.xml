@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 5, 2018 6:27:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.carstore.pojo.Samochod" table="samochod" catalog="carstore">
+        <id name="samochodId" type="java.lang.Short">
+            <column name="samochodID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="kategorie" class="com.carstore.pojo.Kategorie" fetch="select">
+            <column name="kategorieID" not-null="true" />
+        </many-to-one>
+        <property name="cena" type="java.lang.Double">
+            <column name="cena" precision="22" scale="0" />
+        </property>
+        <property name="kolor" type="string">
+            <column name="kolor" length="50" />
+        </property>
+        <property name="marka" type="string">
+            <column name="marka" length="50" />
+        </property>
+        <property name="pojemnoscSilnika" type="java.lang.Float">
+            <column name="pojemnosc_silnika" precision="12" scale="0" />
+        </property>
+        <property name="producent" type="string">
+            <column name="producent" length="50" />
+        </property>
+        <property name="rokProdukcji" type="date">
+            <column name="rok_produkcji" length="10" />
+        </property>
+        <property name="nrSeryjny" type="string">
+            <column name="nr_seryjny" length="50" />
+        </property>
+        <set name="fakturas" table="faktura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="samochodID" not-null="true" />
+            </key>
+            <one-to-many class="com.carstore.pojo.Faktura" />
+        </set>
+    </class>
+</hibernate-mapping>

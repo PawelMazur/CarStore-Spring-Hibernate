@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 5, 2018 6:27:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.carstore.pojo.Kategorie" table="kategorie" catalog="carstore">
+        <id name="kategorieId" type="java.lang.Short">
+            <column name="kategorieID" />
+            <generator class="identity" />
+        </id>
+        <property name="nazwaKategorii" type="string">
+            <column name="nazwa_kategorii" length="50" />
+        </property>
+        <property name="uwagi" type="string">
+            <column name="uwagi" length="65535" />
+        </property>
+        <property name="sportowy" type="string">
+            <column name="sportowy" length="50" />
+        </property>
+        <set name="samochods" table="samochod" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="kategorieID" not-null="true" />
+            </key>
+            <one-to-many class="com.carstore.pojo.Samochod" />
+        </set>
+    </class>
+</hibernate-mapping>

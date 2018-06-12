@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 5, 2018 6:27:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.carstore.pojo.Pracownik" table="pracownik" catalog="carstore">
+        <id name="pracownikId" type="java.lang.Short">
+            <column name="pracownikID" />
+            <generator class="identity" />
+        </id>
+        <property name="imie" type="string">
+            <column name="imie" length="50" />
+        </property>
+        <property name="nazwisko" type="string">
+            <column name="nazwisko" length="50" />
+        </property>
+        <property name="miasto" type="string">
+            <column name="miasto" length="50" />
+        </property>
+        <property name="ulica" type="string">
+            <column name="ulica" length="50" />
+        </property>
+        <property name="kodPocztowy" type="string">
+            <column name="kod_pocztowy" length="50" />
+        </property>
+        <property name="nrTelefonu" type="string">
+            <column name="nr_telefonu" length="50" />
+        </property>
+        <set name="fakturas" table="faktura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="pracownikID" not-null="true" />
+            </key>
+            <one-to-many class="com.carstore.pojo.Faktura" />
+        </set>
+    </class>
+</hibernate-mapping>
